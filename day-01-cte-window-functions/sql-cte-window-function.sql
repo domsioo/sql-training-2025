@@ -14,7 +14,7 @@ CREATE TABLE orders (
 	order_id INT PRIMARY KEY,
 	employee_id INT,
 	sale_amount DECIMAL(10,2),
-	orde_date DATE,
+	order_date DATE,
 	FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
 
@@ -119,10 +119,10 @@ SELECT
 	order_id,
 	employee_id,
 	sale_amount,
-	orde_date,
-	SUM(sale_amount) OVER(ORDER BY orde_date) as running_total
+	order_date,
+	SUM(sale_amount) OVER(ORDER BY order_date) as running_total
 FROM orders
-ORDER BY orde_date
+ORDER BY order_date
 
 -- Rank employees within each department by their salary (highest salary gets rank 1). 
 -- Show department, name, salary, and rank.
